@@ -1,9 +1,13 @@
 bastion = {
   host1 = {
-    location = "eastus"
-    vnet = {
-      new      = { cidr = ["10.19.0.0/16"], subnet_cidr = ["10.19.1.224/27"] }
-      # existing = { virtual_network_name = "", resource_group_name = "" }
+    location              = "eastus"
+    enable_copy_paste     = false
+    enable_file_copy      = false
+    enable_tunneling      = false
+    subnet_address_prefix = ["10.0.1.0/27"]
+    existing = {
+      vnetname = "vnet-dev-eastus"
+      rgname   = "rg-existing-vnet"
     }
   }
 }
