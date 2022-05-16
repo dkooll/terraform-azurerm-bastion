@@ -1,6 +1,7 @@
 locals {
   rules = [
-    { name                       = "AllowHttpsInbound"
+    {
+      name                       = "AllowHttpsInbound"
       description                = "Allow connection from any host on https"
       protocol                   = "Tcp"
       sourcePortRange            = "*"
