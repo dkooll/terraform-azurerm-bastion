@@ -1,3 +1,7 @@
+provider "azurerm" {
+  features {}
+}
+
 module "vnet" {
   source = "github.com/dkooll/terraform-azurerm-vnet"
   vnets = {
