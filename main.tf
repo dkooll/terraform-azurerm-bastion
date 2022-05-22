@@ -91,7 +91,7 @@ resource "azurerm_network_security_group" "nsg" {
       direction                    = security_rule.value.direction
       access                       = security_rule.value.access
       protocol                     = security_rule.value.protocol
-      destination_port_range       = tomap(try(security_rule.value.destinationPortRange, {}))
+      destination_port_range       = tostring(try(security_rule.value.destinationPortRange, {}))
       description                  = try(security_rule.value.description, {})
       source_port_range            = try(security_rule.value.sourcePortRange, {})
       destination_port_ranges      = try(security_rule.value.destinationPortRanges, [])
