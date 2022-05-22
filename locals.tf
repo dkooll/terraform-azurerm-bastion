@@ -11,10 +11,10 @@ locals {
       access                     = "Allow"
       priority                   = 100
       direction                  = "Inbound"
-      sourcePortRanges           = []
-      destinationPortRanges      = []
-      sourceAddressPrefixes      = []
-      destinationAddressPrefixes = []
+      #sourcePortRanges           = []
+      #destinationPortRanges      = []
+      #sourceAddressPrefixes      = []
+      #destinationAddressPrefixes = []
     },
     {
       name                       = "AllowGatewayManagerInbound"
@@ -27,10 +27,10 @@ locals {
       access                     = "Allow"
       priority                   = 110
       direction                  = "Inbound"
-      sourcePortRanges           = []
-      destinationPortRanges      = []
-      sourceAddressPrefixes      = []
-      destinationAddressPrefixes = []
+      #sourcePortRanges           = []
+      #destinationPortRanges      = []
+      #sourceAddressPrefixes      = []
+      #destinationAddressPrefixes = []
     },
     {
       name                     = "AllowSshRdpOutbound"
@@ -42,13 +42,13 @@ locals {
       access                   = "Allow"
       priority                 = 100
       direction                = "Outbound"
-      sourcePortRanges         = []
+      #sourcePortRanges         = []
       destinationPortRanges = [
         "22",
         "3389"
       ]
-      sourceAddressPrefixes      = []
-      destinationAddressPrefixes = []
+      #sourceAddressPrefixes      = []
+      #destinationAddressPrefixes = []
     },
     {
       name                       = "AllowAzureCloudOutbound"
@@ -61,10 +61,10 @@ locals {
       access                     = "Allow"
       priority                   = 110
       direction                  = "Outbound"
-      sourcePortRanges           = []
-      destinationPortRanges      = []
-      sourceAddressPrefixes      = []
-      destinationAddressPrefixes = []
+      #sourcePortRanges           = []
+      #destinationPortRanges      = []
+      #sourceAddressPrefixes      = []
+      #destinationAddressPrefixes = []
     },
     {
       name                     = "AllowBastionCommunication"
@@ -76,13 +76,13 @@ locals {
       access                   = "Allow"
       priority                 = 120
       direction                = "Outbound"
-      sourcePortRanges         = []
+      #sourcePortRanges         = []
       destinationPortRanges = [
         "8080",
         "5701"
       ]
-      sourceAddressPrefixes      = []
-      destinationAddressPrefixes = []
+      #sourceAddressPrefixes      = []
+      #destinationAddressPrefixes = []
     },
     {
       name                       = "AllowGetSessionInformation"
@@ -95,10 +95,10 @@ locals {
       access                     = "Allow"
       priority                   = 130
       direction                  = "Outbound"
-      sourcePortRanges           = []
-      destinationPortRanges      = []
-      sourceAddressPrefixes      = []
-      destinationAddressPrefixes = []
+      #sourcePortRanges           = []
+      #destinationPortRanges      = []
+      #sourceAddressPrefixes      = []
+      #destinationAddressPrefixes = []
     }
   ]
 }

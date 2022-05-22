@@ -91,15 +91,15 @@ resource "azurerm_network_security_group" "nsg" {
       direction                    = security_rule.value.direction
       access                       = security_rule.value.access
       protocol                     = security_rule.value.protocol
-      description                  = lookup(security_rule.value, "description", null)
-      source_port_range            = lookup(security_rule.value, "sourcePortRange", null)
-      source_port_ranges           = lookup(security_rule.value, "sourcePortRanges", null)
-      destination_port_range       = lookup(security_rule.value, "destinationPortRange", null)
-      destination_port_ranges      = lookup(security_rule.value, "destinationPortRanges", null)
-      source_address_prefix        = lookup(security_rule.value, "sourceAddressPrefix", null)
-      source_address_prefixes      = lookup(security_rule.value, "sourceAddressPrefixes", null)
-      destination_address_prefix   = lookup(security_rule.value, "destinationAddressPrefix", null)
-      destination_address_prefixes = lookup(security_rule.value, "destinationAddressPrefixes", null)
+      description                  = try(security_rule.value.description, {})
+      source_port_range            = try(security_rule.value.sourcePortRange, {})
+      source_port_ranges           = try(security_rule.value.sourcePortRanges, [])
+      destination_port_range       = try(security_rule.value.destinationPortRange, {})
+      destination_port_ranges      = try(security_rule.value.destinationPortRanges, [])
+      source_address_prefix        = try(security_rule.value.sourceAddressPrefix, {})
+      source_address_prefixes      = try(security_rule.value.sourceAddressPrefixes, [])
+      destination_address_prefix   = try(security_rule.value.destinationAddressPrefix, [])
+      destination_address_prefixes = try(security_rule.value.destinationAddressPrefixes, [])
     }
   }
 }
