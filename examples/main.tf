@@ -6,7 +6,7 @@ module "vnet" {
   source = "github.com/dkooll/terraform-azurerm-vnet"
   vnets = {
     vnet1 = { cidr = ["10.0.0.0/16"], location = "westeurope" }
-    vnet2 = { cidr = ["10.0.1.0/16"], location = "eastus2"}
+    vnet2 = { cidr = ["10.0.1.0/16"], location = "eastus2" }
   }
 }
 
