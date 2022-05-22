@@ -21,7 +21,7 @@ module "bastion" {
       enable_tunneling      = false
       subnet_address_prefix = ["10.0.0.0/27"]
       existing = {
-        vnetname = module.vnet.vnet1.name
+        vnetname = module.vnet.vnet.vnet1.name
         rgname   = "rg-network-dev-001"
       }
     }
