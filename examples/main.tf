@@ -9,7 +9,7 @@ module "vnet" {
 }
 
 module "bastion" {
-  source = "../"
+  source = "github.com/dkooll/terraform-azurerm-bastion?ref=feature/add-initial-testing"
   depends_on = [
     module.vnet
   ]
