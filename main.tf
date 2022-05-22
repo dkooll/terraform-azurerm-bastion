@@ -7,7 +7,7 @@
 #----------------------------------------------------------------------------------------
 
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-network-${var.env}-001"
+  name     = "rg-bastion-${var.env}-001"
   location = "westeurope"
 }
 
