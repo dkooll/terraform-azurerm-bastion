@@ -93,7 +93,7 @@ resource "azurerm_network_security_group" "nsg" {
       protocol                     = security_rule.value.protocol
       destination_port_range       = security_rule.value.destinationPortRange
       description                  = try(security_rule.value.description, {})
-      source_port_range            = security_rule.value.sourcePortRange
+      source_port_range            = try(security_rule.value.sourcePortRange, {})
       destination_port_ranges      = try(security_rule.value.destinationPortRanges, [])
       source_address_prefix        = try(security_rule.value.sourceAddressPrefix, {})
       source_address_prefixes      = try(security_rule.value.sourceAddressPrefixes, [])
