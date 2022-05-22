@@ -19,7 +19,7 @@ module "bastion" {
   ]
   bastion = {
     host1 = {
-      location              = "eastus"
+      location              = "westeurope"
       enable_copy_paste     = false
       enable_file_copy      = false
       enable_tunneling      = false
