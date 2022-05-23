@@ -12,8 +12,8 @@ func TestApplyNoError(t *testing.T) {
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
 
 		TerraformDir: "../examples",
-		Parallelism:  2,
 		NoColor:      true,
+		// Parallelism:  2,
 	})
 
 	defer terraform.Destroy(t, terraformOptions)

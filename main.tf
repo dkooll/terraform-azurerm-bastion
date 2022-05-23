@@ -1,13 +1,9 @@
-# provider "azurerm" {
-#   features {}
-# }
-
 #----------------------------------------------------------------------------------------
 # Resourcegroups
 #----------------------------------------------------------------------------------------
 
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-bastion-${var.env}-001"
+  name     = var.resourcegroup
   location = "westeurope"
 }
 
