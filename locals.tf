@@ -76,7 +76,7 @@ locals {
       access                   = "Allow"
       priority                 = 120
       direction                = "Outbound"
-      sourcePortRanges         = []
+      #sourcePortRanges         = []
       destinationPortRanges = [
         "8080",
         "5701"
