@@ -1,5 +1,7 @@
 ![example workflow](https://github.com/dkooll/terraform-azurerm-bastion/actions/workflows/validate.yml/badge.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![Open: Issues](https://img.shields.io/github/issues-raw/dkooll/terraform-azurerm-bastion?color=red)
+![Closed: Issues](https://img.shields.io/github/issues-closed-raw/dkooll/terraform-azurerm-bastion?color=%20)
 
 ## Bastion Hosts `[Microsoft.Network/bastionHosts]`
 
