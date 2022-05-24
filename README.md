@@ -2,7 +2,15 @@
 
 ## Bastion Hosts
 
-Terraform module which creates bastion hosts on Azure.
+Terraform module which creates bastion hosts on Azure. It references a single object called bastion. Multiple hosts are supported.
+As a dependency, it needs an existing virtual network, on which the bastion subnet will be placed. The vnet and cidr blocks needs to be alligned to get this to work.
+The corresponding network security group rules are defined in local variables. They are created using best practise and do not change often.
+
+The code base is validated using [terratest](https://terratest.gruntwork.io/). These tests can be found [here](tests).
+
+The [example](examples) directory contains any prerequirements and integrations to test the code and is set as the working directory.
+
+The below example shows the usage and available features when consuming the module.
 
 ## Usage: single bastion host existing vnet
 
@@ -43,18 +51,17 @@ module "bastion" {
 | Name | Type |
 | :-- | :-- |
 | [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
-| [azurerm_virtual_network]() | datasource |
-| [azurerm_subnet]() | resource |
-| [azurerm_public_ip]() | resource |
-| [azurerm_bastion_host]() | resource |
-| [azurerm_network_security_group]() | resource |
-| [azurerm_subnet_network_security_group_association]() | resource |
+| [azurerm_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet) | resource |
+| [azurerm_public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
+| [azurerm_bastion_host](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/bastion_host) | resource |
+| [azurerm_network_security_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group) | resource |
+| [azurerm_subnet_network_security_group_association](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet_network_security_group_association) | resource |
 
 ## Data Sources
 
 | Name | Type |
 | :-- | :-- |
-| [azurerm_virtual_network]() | datasource |
+| [azurerm_virtual_network](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | datasource |
 
 ## Inputs
 
