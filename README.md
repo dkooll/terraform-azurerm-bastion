@@ -4,6 +4,7 @@
 
 Terraform module which creates bastion hosts on Azure. It references a single object called bastion. Multiple hosts are supported.
 As a dependency, it needs an existing virtual network, on which the bastion subnet will be placed. The vnet and cidr blocks needs to be alligned to get this to work.
+
 The corresponding network security group rules are defined in local variables. They are created using best practise and do not change often.
 
 The code base is validated using [terratest](https://terratest.gruntwork.io/). These tests can be found [here](tests).
