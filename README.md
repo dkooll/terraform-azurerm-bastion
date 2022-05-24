@@ -1,6 +1,6 @@
 ![example workflow](https://github.com/dkooll/terraform-azurerm-bastion/actions/workflows/validate.yml/badge.svg)
 
-## Bastion Hosts
+# Bastion Hosts
 
 Terraform module which creates bastion hosts on Azure. It references a single object called bastion. Multiple hosts are supported.
 As a dependency, it needs an existing virtual network, on which the bastion subnet will be placed. The vnet and cidr blocks needs to be alligned to get this to work.
