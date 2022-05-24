@@ -4,9 +4,8 @@
 
 Terraform module which creates bastion hosts on Azure.
 
-## Usage:
+## Usage: single bastion host existing vnet
 
-`single bastion host existing vnet`
 ```hcl
 module "vnet" {
   source        = "github.com/dkooll/terraform-azurerm-vnet"
