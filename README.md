@@ -1,43 +1,19 @@
 ![example workflow](https://github.com/dkooll/terraform-azurerm-bastion/actions/workflows/validate.yml/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Open: Issues](https://img.shields.io/github/issues-raw/dkooll/terraform-azurerm-bastion?color=red)
-![Closed: Issues](https://img.shields.io/github/issues-closed-raw/dkooll/terraform-azurerm-bastion?color=%20)
 
-## Bastion Hosts `[Microsoft.Network/bastionHosts]`
+## Bastion Hosts
 
-Terraform module which creates bastion hosts on Azure.
+Terraform module which creates bastion hosts on Azure. It references a single object called bastion. Multiple hosts are supported.
+As a dependency, it needs an existing virtual network, on which the bastion subnet will be placed. The vnet and cidr blocks needs to be alligned to get this to work.
 
-## Table of Contents
+The code base is validated using [terratest](https://terratest.gruntwork.io/). These tests can be found [here](tests).
 
-- [Bastion Hosts](#bastion-hosts)
-  - [**Table of Contents**](#table-of-contents)
-  - [Resources](#resources)
-  - [Inputs](#inputs)
-    - [Usage: `single bastion host existing vnet`](#inputs-usage-single-bastion-hosts-existing-vnet)
-  - [Outputs](#outputs)
+The [example](examples) directory contains any prerequirements and integrations to test the code and is set as the working directory.
 
-## Resources
+The below example shows the usage and available features when consuming the module.
 
-| Name | Type |
-| :-- | :-- |
-| `azurerm_resource_group` | resource |
-| `azurerm_virtual_network` | datasource |
-| `azurerm_subnet` | resource |
-| `azurerm_public_ip` | resource |
-| `azurerm_bastion_host` | resource |
-| `azurerm_network_security_group` | resource |
-| `azurerm_subnet_network_security_group_association` | resource |
+## Usage: single bastion host existing vnet
 
-## Inputs
-
-| Name | Description | Type | Required |
-| :-- | :-- | :-- | :-- |
-| `bastion` | describes bastion related configuration | object | yes |
-| `resourcegroup` | describes resourcegroup name | string | yes |
-
-### Usage: `single bastion host existing vnet`
-
-```terraform
+```hcl
 module "vnet" {
   source        = "github.com/dkooll/terraform-azurerm-vnet"
   resourcegroup = "rg-network-dev"
@@ -69,9 +45,41 @@ module "bastion" {
 }
 ```
 
+## Resources
+
+| Name | Type |
+| :-- | :-- |
+| [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
+| [azurerm_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet) | resource |
+| [azurerm_public_ip](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/public_ip) | resource |
+| [azurerm_bastion_host](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/bastion_host) | resource |
+| [azurerm_network_security_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_security_group) | resource |
+| [azurerm_subnet_network_security_group_association](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet_network_security_group_association) | resource |
+
+## Data Sources
+
+| Name | Type |
+| :-- | :-- |
+| [azurerm_virtual_network](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_network) | datasource |
+
+## Inputs
+
+| Name | Description | Type | Required |
+| :-- | :-- | :-- | :-- |
+| `bastion` | describes bastion related configuration | object | yes |
+| `resourcegroup` | describes resourcegroup name | string | yes |
+
 ## Outputs
 
 | Name | Description |
 | :-- | :-- |
 | `subnets` | contains all subnets |
 | `vnets` | contains all vnets |
+
+## Authors
+
+Module is maintained by [Dennis Kool](https://github.com/dkooll) with help from [these awesome contributors](https://github.com/dkooll/terraform-azurerm-bastion/graphs/contributors).
+
+## License
+
+MIT Licensed. See [LICENSE](https://github.com/dkooll/terraform-azurerm-bastion/tree/master/LICENSE) for full details.
