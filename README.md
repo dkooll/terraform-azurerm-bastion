@@ -1,43 +1,12 @@
 ![example workflow](https://github.com/dkooll/terraform-azurerm-bastion/actions/workflows/validate.yml/badge.svg)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Open: Issues](https://img.shields.io/github/issues-raw/dkooll/terraform-azurerm-bastion?color=red)
-![Closed: Issues](https://img.shields.io/github/issues-closed-raw/dkooll/terraform-azurerm-bastion?color=%20)
 
-## Bastion Hosts `[Microsoft.Network/bastionHosts]`
+## Bastion Hosts
 
 Terraform module which creates bastion hosts on Azure.
 
-## Table of Contents
+## Usage: single bastion host existing vnet
 
-- [Bastion Hosts](#bastion-hosts)
-  - [**Table of Contents**](#table-of-contents)
-  - [Resources](#resources)
-  - [Inputs](#inputs)
-    - [Usage: `single bastion host existing vnet`](#inputs-usage-single-bastion-hosts-existing-vnet)
-  - [Outputs](#outputs)
-
-## Resources
-
-| Name | Type |
-| :-- | :-- |
-| `azurerm_resource_group` | resource |
-| `azurerm_virtual_network` | datasource |
-| `azurerm_subnet` | resource |
-| `azurerm_public_ip` | resource |
-| `azurerm_bastion_host` | resource |
-| `azurerm_network_security_group` | resource |
-| `azurerm_subnet_network_security_group_association` | resource |
-
-## Inputs
-
-| Name | Description | Type | Required |
-| :-- | :-- | :-- | :-- |
-| `bastion` | describes bastion related configuration | object | yes |
-| `resourcegroup` | describes resourcegroup name | string | yes |
-
-### Usage: `single bastion host existing vnet`
-
-```terraform
+```hcl
 module "vnet" {
   source        = "github.com/dkooll/terraform-azurerm-vnet"
   resourcegroup = "rg-network-dev"
@@ -68,6 +37,31 @@ module "bastion" {
   }
 }
 ```
+
+## Resources
+
+| Name | Type |
+| :-- | :-- |
+| [azurerm_resource_group](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
+| [azurerm_virtual_network]() | datasource |
+| [azurerm_subnet]() | resource |
+| [azurerm_public_ip]() | resource |
+| [azurerm_bastion_host]() | resource |
+| [azurerm_network_security_group]() | resource |
+| [azurerm_subnet_network_security_group_association]() | resource |
+
+## Data Sources
+
+| Name | Type |
+| :-- | :-- |
+| [azurerm_virtual_network]() | datasource |
+
+## Inputs
+
+| Name | Description | Type | Required |
+| :-- | :-- | :-- | :-- |
+| `bastion` | describes bastion related configuration | object | yes |
+| `resourcegroup` | describes resourcegroup name | string | yes |
 
 ## Outputs
 
