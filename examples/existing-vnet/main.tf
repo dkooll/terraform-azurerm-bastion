@@ -14,7 +14,7 @@ module "vnet" {
 }
 
 module "bastion" {
-  source        = "../"
+  source        = "github.com/dkooll/terraform-azurerm-bastion"
   depends_on    = [module.vnet]
   resourcegroup = "rg-bastion-dev"
   bastion = {
