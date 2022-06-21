@@ -4,6 +4,7 @@ provider "azurerm" {
 
 module "vnet" {
   source        = "github.com/dkooll/terraform-azurerm-vnet"
+  version       = "1.1.0"
   resourcegroup = "rg-network-dev"
   vnets = {
     vnet1 = {
