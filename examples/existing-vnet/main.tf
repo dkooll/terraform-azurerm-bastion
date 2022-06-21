@@ -25,8 +25,8 @@ module "bastion" {
       enable_file_copy      = false
       enable_tunneling      = false
       existing = {
-        vnetname = lookup(module.network["vnets"].bastion["name"], null)
-        rgname   = lookup(module.network["vnets"].bastion["resource_group_name"], null)
+        vnetname = lookup(module.network.vnets.bastion, "name", null)
+        rgname   = lookup(module.network.vnets.bastion, "resource_group_name", null)
       }
     }
   }
