@@ -6,8 +6,8 @@ module "network" {
   source        = "github.com/dkooll/terraform-azurerm-vnet?ref=1.1.0"
   vnets = {
     bastion = {
-      cidr           = ["10.19.0.0/16"]
-      location       = "eastus2"
+      cidr          = ["10.19.0.0/16"]
+      location      = "eastus2"
       resourcegroup = "rg-network-eus2"
     }
   }
