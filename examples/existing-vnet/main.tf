@@ -15,7 +15,7 @@ module "network" {
 
 module "bastion" {
   source     = "../../"
-  depends_on = [module.vnet]
+  depends_on = [module.network]
   bastion = {
     host1 = {
       resourcegroup         = "rg-bastion-dev"
