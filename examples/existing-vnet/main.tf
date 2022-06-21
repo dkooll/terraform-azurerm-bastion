@@ -4,12 +4,11 @@ provider "azurerm" {
 
 module "network" {
   source        = "github.com/dkooll/terraform-azurerm-vnet?ref=1.1.0"
-  resourcegroup = "rg-network-dev"
   vnets = {
-    vnet1 = {
+    bastion = {
       cidr           = ["10.19.0.0/16"]
       location       = "eastus2"
-      resource_group = "rg-network-eus2"
+      resourcegroup = "rg-network-eus2"
     }
   }
 }
@@ -26,8 +25,8 @@ module "bastion" {
       enable_file_copy      = false
       enable_tunneling      = false
       existing = {
-        vnetname = lookup(module.network["vnets"].vnet1["name"], null)
-        rgname   = lookup(module.network["vnets"].vnet1["resource_group_name"], null)
+        vnetname = lookup(module.network["vnets"].bastion["name"], null)
+        rgname   = lookup(module.network["vnets"].bastion["resource_group_name"], null)
       }
     }
   }
