@@ -15,8 +15,8 @@ module "vnet" {
 }
 
 module "bastion" {
-  source        = "github.com/dkooll/terraform-azurerm-bastion"
-  depends_on    = [module.vnet]
+  source     = "github.com/dkooll/terraform-azurerm-bastion"
+  depends_on = [module.vnet]
   bastion = {
     host1 = {
       location              = "eastus2"
