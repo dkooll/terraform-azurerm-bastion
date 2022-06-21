@@ -15,31 +15,31 @@ The below examples shows the usage when consuming the module:
 ## Usage: single bastion host existing vnet
 
 ```hcl
-module "vnet" {
-  source        = "github.com/dkooll/terraform-azurerm-vnet"
-  resourcegroup = "rg-network-dev"
+module "network" {
+  source = "github.com/dkooll/terraform-azurerm-vnet?ref=1.1.0"
   vnets = {
-    vnet1 = {
-      cidr     = ["10.0.0.0/16"]
-      location = "westeurope"
+    bastion = {
+      cidr          = ["10.19.0.0/16"]
+      location      = "eastus2"
+      resourcegroup = "rg-network-eus2"
     }
   }
 }
 
 module "bastion" {
-  source        = "github.com/dkooll/terraform-azurerm-bastion"
-  depends_on    = [module.vnet]
-  resourcegroup = "rg-bastion-dev"
+  source     = "../../"
+  depends_on = [module.network]
   bastion = {
     host1 = {
-      location              = "westeurope"
+      resourcegroup         = "rg-bastion-dev"
+      location              = "eastus2"
+      subnet_address_prefix = ["10.19.0.0/27"]
       enable_copy_paste     = false
       enable_file_copy      = false
       enable_tunneling      = false
-      subnet_address_prefix = ["10.0.0.0/27"]
       existing = {
-        vnetname = module.vnet.vnets.vnet1.name
-        rgname   = module.vnet.resourcegroup
+        vnetname = lookup(module.network.vnets.bastion, "name", null)
+        rgname   = lookup(module.network.vnets.bastion, "resource_group_name", null)
       }
     }
   }
