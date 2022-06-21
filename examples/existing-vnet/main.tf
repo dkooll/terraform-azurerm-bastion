@@ -7,8 +7,9 @@ module "vnet" {
   resourcegroup = "rg-network-dev"
   vnets = {
     vnet1 = {
-      cidr     = ["10.0.0.0/16"]
-      location = "westeurope"
+      cidr           = ["10.19.0.0/16"]
+      location       = "eastus2"
+      resource_group = "rg-network-eus2"
     }
   }
 }
@@ -16,17 +17,17 @@ module "vnet" {
 module "bastion" {
   source        = "github.com/dkooll/terraform-azurerm-bastion"
   depends_on    = [module.vnet]
-  resourcegroup = "rg-bastion-dev"
   bastion = {
     host1 = {
-      location              = "westeurope"
+      location              = "eastus2"
+      resourcegroup         = "rg-bastion-dev"
+      subnet_address_prefix = ["10.19.0.0/27"]
       enable_copy_paste     = false
       enable_file_copy      = false
       enable_tunneling      = false
-      subnet_address_prefix = ["10.0.0.0/27"]
       existing = {
-        vnetname = module.vnet.vnets.vnet1.name
-        rgname   = module.vnet.resourcegroup
+        vnetname = lookup(module.vnet.vnets.vnet1, "name", null)
+        rgname   = lookup(module.vnet.vnets.vnet1, "resource_group_name", null)
       }
     }
   }
