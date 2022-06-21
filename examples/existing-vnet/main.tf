@@ -3,8 +3,7 @@ provider "azurerm" {
 }
 
 module "vnet" {
-  source        = "github.com/dkooll/terraform-azurerm-vnet"
-  version       = "1.1.0"
+  source        = "github.com/dkooll/terraform-azurerm-vnet?ref=v1.1.0"
   resourcegroup = "rg-network-dev"
   vnets = {
     vnet1 = {
@@ -16,7 +15,6 @@ module "vnet" {
 }
 
 module "bastion" {
-  #source     = "github.com/dkooll/terraform-azurerm-bastion"
   source     = "../../"
   depends_on = [module.vnet]
   bastion = {
